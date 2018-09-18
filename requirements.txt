@@ -1,0 +1,4 @@
+dlib
+scikit-learn
+scikit-image
+filterpy

@@ -1,0 +1,19 @@
+version: '2.3'
+services:
+  jupyter:
+    build:
+      context: ./
+      dockerfile: ./docker/Dockerfile
+    image: ml-ubuntu:latest
+    container_name: exp-sort-jupyter
+    tty: true
+    ports:
+      - 6677:8888
+    volumes:
+      - ./:/home
+      # apply your local custom.css
+      - ./jupyter/custom:/root/.jupyter/custom
+    environment:
+     # root のホームディレクトリに python の path を通すことで
+     # プロジェクトルートに配置した自作のモジュールを import できるようにしている
+     - PYTHONPATH=/home/
